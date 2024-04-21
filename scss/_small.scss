@@ -1,0 +1,160 @@
+/* Prevent adjustments of font size after orientation changes.  */
+html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    height: 100%;
+}
+  
+/*---- apply a natural box layout model to all elements -------*/
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    font-family: $defaultFont;
+    font-weight: $normalWeight;
+    color: $fontColor;
+    background-color: #ebeae0;
+}
+
+
+// HEADER
+#headerWrapper {
+    background-color: $navColor;
+    color: $backgroundColor;
+}
+header {
+    display: grid;
+    grid-template-columns: 51px auto;
+    align-items: center;
+    padding: 1rem $gutter;
+    gap: 10px;
+    h1 {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: $boldWeight;
+    }
+} // end header
+
+
+// NAV
+nav {
+    width: 100%;
+    button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: transparent;
+        border: none;
+        font-size: 2rem;
+        color: $primaryColor;
+        padding: 1rem 2vw .5rem 2vw;
+    }
+    ul{
+        background-color: $navColor;
+        list-style-type: none;
+        display: none;
+        position: absolute;
+        right: 0;
+        padding: 0;
+        margin: 2rem 0;
+        width: 100%;
+        li {flex:1;}
+    }
+    ul.open {display: block;}
+
+    ul li a {
+        display: block;
+        padding: .9rem 2vw;
+        text-align: center;
+        text-decoration: none;
+        color: #E4E4E4;
+        border-radius: 50px;
+        margin: 0 .5rem;
+    }
+    ul li.active a {
+        background-color: lighten($navColor, 5%); border-radius: 50px;
+    }
+    ul li a:hover {background-color: lighten($navColor, 8%);}
+
+}// end nav
+
+
+// MAIN 
+main {
+    img {
+    width: 100%;
+    height: auto;
+    padding: .5rem;
+    }
+    .subheading {
+        margin-left: $gutter;
+    }
+    button{
+        border: none;
+        padding: 1rem;
+        background-color: $primaryColor;
+        border-radius: 8px;
+    }
+}
+
+
+// styling the rows
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem 0;
+    padding: 0 8px;
+
+    //border: dashed 1px lime;
+}
+
+// styling the columns
+.column {
+    padding: 0 8px;
+    margin: 8px 0;
+    h2 {margin-bottom: 3px;}
+    h3{margin-top: 0; margin-bottom: 5px;}
+    p{margin-top:0;}
+    //border: dashed 1px pink;
+    section {padding-bottom: 8px;}
+
+}
+
+.signup {
+    p{padding: .8rem; margin-bottom: 0; color:#a3a3a3}
+    
+}
+
+
+.middle {align-content: center;}
+.line, .round, .fill, .shadow {padding: 0px 8px;}
+.line {border: 1px solid #bbb}
+.round {border-radius: 9px;}
+.fill {background-color: $secondaryColor;}
+.shadow{box-shadow: 0 2px 4px #cbcbcb;}
+
+// create for loop
+@for $i from 1 through 12 {
+    $w: calc($i / 12) *100%;
+    .small-#{$i} {flex-basis: $w;}
+}
+
+
+
+// begin footer
+#footerWrapper {
+    background-color: $secondaryColor;
+    padding: .8rem $gutter;
+    p {
+        margin: 0;
+        font-weight: $lightWeight;
+        color: #333;
+        text-align: center;
+    }
+}
